@@ -19,6 +19,9 @@ No hace falta un directorio `data/`: el dataset se obtiene mediante `sklearn.dat
 
 ## Entorno y ejecución
 
+La ejecución de esta entrega se realizó con PyTorch **2.12.1+cpu**,
+utilizando CPU.
+
 Requiere Python 3.10 o posterior con dependencias de `requirements.txt`. Se puede ejecutar desde VS Code o Jupyter.
 
 ```bash
@@ -31,33 +34,33 @@ Abrir `notebooks/01_clasificador_iris_pytorch.ipynb` y utilizar **Restart Kernel
 
 ## Arquitectura e hiperparámetros
 
-| Componente | Configuración |
-|---|---|
-| Dataset | Iris, integrado en scikit-learn |
-| División | 80 % entrenamiento, 20 % validación, estratificada |
-| Semilla | `42` (NumPy, Python y PyTorch) |
-| Modelo | `Linear(4,8) → ReLU → Linear(8,3)` |
-| Función de pérdida | `CrossEntropyLoss` |
-| Optimizador | `Adam` |
-| Learning rate | `0.1` (conservado del notebook original) |
-| Máximo de épocas | `100` |
-| Early Stopping | `patience = 10`, por mínimo Loss de validación |
-| Checkpoint | Se recuperan en memoria los mejores pesos (`deepcopy(state_dict)`) |
-| Métricas | Loss y Accuracy de entrenamiento y validación por época |
+| Componente         | Configuración                                                      |
+| ------------------ | ------------------------------------------------------------------ |
+| Dataset            | Iris, integrado en scikit-learn                                    |
+| División           | 80 % entrenamiento, 20 % validación, estratificada                 |
+| Semilla            | `42` (NumPy, Python y PyTorch)                                     |
+| Modelo             | `Linear(4,8) → ReLU → Linear(8,3)`                                 |
+| Función de pérdida | `CrossEntropyLoss`                                                 |
+| Optimizador        | `Adam`                                                             |
+| Learning rate      | `0.1` (conservado del notebook original)                           |
+| Máximo de épocas   | `100`                                                              |
+| Early Stopping     | `patience = 10`, por mínimo Loss de validación                     |
+| Checkpoint         | Se recuperan en memoria los mejores pesos (`deepcopy(state_dict)`) |
+| Métricas           | Loss y Accuracy de entrenamiento y validación por época            |
 
 ## Resultados reproducidos en la revisión
 
 Para Python/PyTorch en CPU, ejecutando el notebook completo:
 
-| Métrica | Resultado |
-|---|---:|
-| Épocas ejecutadas | 100 |
-| Mejor época | 100 (índice 99) |
-| Loss de entrenamiento, mejor modelo | 0.154392 |
-| Loss de validación, mejor modelo | 0.177231 |
-| Accuracy de entrenamiento | 97.50 % |
-| Accuracy de validación | 96.67 % (29 de 30) |
-| Early Stopping | No se activó |
+| Métrica                             |          Resultado |
+| ----------------------------------- | -----------------: |
+| Épocas ejecutadas                   |                100 |
+| Mejor época                         |    100 (índice 99) |
+| Loss de entrenamiento, mejor modelo |           0.154392 |
+| Loss de validación, mejor modelo    |           0.177231 |
+| Accuracy de entrenamiento           |            97.50 % |
+| Accuracy de validación              | 96.67 % (29 de 30) |
+| Early Stopping                      |       No se activó |
 
 Las métricas se calculan de nuevo al ejecutar el notebook; pueden variar con cambios de versión, plataforma o hiperparámetros. Las figuras de Loss y Accuracy están guardadas en la salida del notebook y son reproducibles.
 
